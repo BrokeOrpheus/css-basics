@@ -1,0 +1,45 @@
+// Colors
+$primary: #0f1f32
+$secondary: #ddd
+$tertiary: tan
+$accent: #2bd
+$dark: #111
+$gray: #1f1f1f
+
+$white-shadow: 0 0 2px #aaa
+
+@mixin blue-shadow
+  color: $accent
+  text-shadow: 0 0 2px $accent
+
+@mixin flex-column
+  display: flex
+  flex-direction: column
+
+@mixin flex-center
+  display: flex
+  place-content: center
+  place-items: center
+
+@mixin fill
+  width: 100%
+  height: 100%
+
+
+// Keyframes
+  
+@keyframes open-details
+  from
+    grid-template-rows: 0fr
+  to
+    grid-template-rows: 1fr
+  
+// Size
+
+$sm: 600px
+$med: 768px
+$lg: 992px
+
+$navheight: 50px
+$bodypadding: 45px
+$navbtntransform: rotate(90deg) translate(calc(($navheight/2) + ($bodypadding/2)), calc(($navheight/2) - ($bodypadding/2)) * -1)

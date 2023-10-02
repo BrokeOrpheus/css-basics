@@ -1,0 +1,133 @@
+@use 'variables' as *
+
+// Keyframes
+
+@keyframes show-sm-nav
+  from
+    height: 0em
+  to
+    height: 15em
+
+@keyframes hide-lg-nav
+  0%,
+  50%
+    left: 0%
+  100%
+    left: -100%
+
+@keyframes show-lg-nav
+  0%,
+  50%
+    left: -100%
+  100%
+    left: 0%
+
+@keyframes move-lg-nav-btn
+  0%,
+  100%
+    transform: rotate(0deg) translate(0)
+  33%,
+  66%
+    transform: $navbtntransform
+
+
+// Mixins
+
+@mixin lg-nav($name, $time)
+  animation: $name $time
+  animation-fill-mode: forwards
+
+
+// General
+
+nav
+  display: flex
+  align-items: center
+  gap: 5px
+  position: fixed
+  left: 0%
+  width: 100%
+  height: $navheight
+  padding-left: 75px
+  background-color: #2f3f5ff5
+  border-bottom: 2px solid black
+  z-index: 10
+
+  a
+    padding: 0 10px
+    background-color: $gray
+    text-decoration: none
+    color: $secondary
+    border: 1px solid black
+
+  a:hover
+    color: white
+
+  a:active
+    transform: scale(.9)
+
+#sm-nav, #lg-nav
+  button
+    position: fixed
+    left: 0%
+    width: $bodypadding
+    height: $navheight
+    z-index: 11
+
+
+// Small nav
+
+#sm-nav dialog
+  contain: content
+  position: absolute
+  top: $navheight
+  left: 0%
+  margin: 0
+  padding: 0
+  animation: show-sm-nav .5s
+  animation-fill-mode: forwards
+  background: #2f3f5ff5
+  box-shadow: 2px 2px 10px black
+
+  ul
+    @include flex-column
+    justify-content: space-evenly
+    @include fill
+    padding: 0 10px
+
+    li:active
+      transform: scale(.9)
+
+#sm-nav
+  button
+    border-radius: 0
+
+
+// Large nav
+
+#lg-nav
+  display: none
+
+#lg-nav button
+  border-radius: 0
+  border-top-right-radius: 10px
+  border-bottom-right-radius: 10px
+
+.move-lg-nav-btn
+  @include lg-nav(move-lg-nav-btn, .75s)
+  
+.hide-lg-nav
+  @include lg-nav(hide-lg-nav, .5s)
+
+.show-lg-nav
+  @include lg-nav(show-lg-nav, .5s)
+
+
+// Media Rules
+
+@media (min-width: $sm)
+  #sm-nav
+    display: none
+
+  #lg-nav
+    display: flex

@@ -1,0 +1,91 @@
+@use 'variables' as *
+
+.display, .controls
+  width: 100%
+  border: 2px solid $tertiary
+
+.display
+  height: 50vh
+  border-radius: 5px 5px 0 0
+  background: $secondary
+
+.controls
+  @include flex-column
+  flex-wrap: wrap
+  gap: 10px
+  height: auto
+  padding: 1em
+  background: $dark
+  border-radius: 0 0 5px 5px
+
+.control-group
+  width: 100%
+
+  .details-grid-item
+    @include flex-column
+
+.box1
+  background: red
+
+.box2
+  background: green
+
+.box3
+  background: blue
+
+.box4
+  background: yellow
+
+.boxes-1
+  .box2, .box3, .box4
+    display: none
+
+.boxes-2
+  .box3, .box4
+    display: none
+
+.boxes-3
+  .box4
+    display: none
+
+
+// Flex
+
+#flex
+  .box
+    width: 40%
+    height: 20%
+    border: 1px solid black
+
+#flex-display
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+
+
+//Grid
+
+#grids
+  .box
+    width: 80%
+    height: 80%
+    border: 1px solid black
+
+#grid-display
+  display: grid
+  gap: 10px
+  grid-template-columns: 40% 40%
+  grid-auto-rows: 40%
+
+.boxes-1 .box1
+  grid-column: span 2
+
+.boxes-3 .box3
+  grid-column: span 2
+
+
+// Media Rules
+
+@media (min-width: $sm)
+  .control-group .details-grid-item
+    flex-direction: row

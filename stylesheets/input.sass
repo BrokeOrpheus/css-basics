@@ -1,0 +1,101 @@
+@use 'variables' as *
+@use 'layout' as *
+@use 'navs' as *
+@use 'animations' as *
+@use 'forms' as *
+@use 'filters' as *
+@use 'displays' as *
+
+
+//Reset 
+
+div, ul, body
+  margin: 0
+  padding: 0
+
+//General
+  
+@font-face
+  font-family: noto-sans
+  src: url(../noto_sans/NotoSans-Regular.ttf)
+  font-weight: 900
+
+*, *::before, *::after
+  box-sizing: border-box
+  color: $secondary
+  border-color: $tertiary
+  border-radius: 5px
+  scroll-margin: $navheight
+  font-family: inherit
+
+html
+  scroll-behavior: smooth
+  scrollbar-color: $tertiary $primary
+  position: relative
+  font-family: noto-sans
+
+header > *
+  border-radius: 0
+
+body
+  background-color: $primary
+  padding-inline: $bodypadding
+
+main
+  padding-top: $navheight
+
+section
+  margin: 1.5em 0
+
+h1
+  text-align: center
+
+hr
+  width: 100%
+  border: 1px solid white
+  box-shadow: 0 0 3px white
+
+input, select, button
+  accent-color: $accent
+  caret-color: $accent
+  background-color: $gray
+  width: 100px
+  border-style: outset
+
+button, select, summary
+  cursor: pointer
+
+button:active
+  transform: scale(.9)
+
+label
+  display: block
+
+ul
+  list-style: none
+
+details
+  user-select: none
+  border: 1px solid $tertiary
+  background: $gray
+
+  summary
+    padding: 10px
+    color: $accent
+
+    span
+      color: $secondary
+
+details[open]
+  .details-grid
+    display: grid
+    animation: open-details .5s
+    animation-fill-mode: forwards
+    background: $dark
+    border-radius: 0 0 5px 5px
+
+  .details-grid-item
+    overflow: hidden
+
+    > div
+      margin: .7em

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/output.css" />
+    <title>CSS Basics</title>
+    <script src="https://kit.fontawesome.com/d698bfc14b.js" crossorigin="anonymous" defer></script>
+    <script src="./js/utils.js" defer></script>
+    <script src="./js/index.js" defer></script>
+  </head>
+
+  <body>
+
+    <div id="overlay"></div>
+
+    <header>
+      <!-- Small Nav -->
+      <nav id="sm-nav">
+        <button onclick="toggleSmNav()"><i class="fa-solid fa-bars"></i></button>
+        <dialog>
+          <ul>
+            <li><a href="#animations">Animations</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#filters">Filters</a></li>
+            <li><a href="#flex">Flex</a></li>
+            <li><a href="#grids">Grids</a></li>
+          </ul>
+        </dialog>
+      </nav>
+
+      <!-- Large Nav -->
+      <nav id="lg-nav">
+        <button onclick="toggleLgNav()"><i class="fa-solid fa-chevron-left"></i></button>
+        <a href="#animations">Animations</a>
+        <a href="#forms">Forms</a>
+        <a href="#filters">Filters</a>
+        <a href="#flex">Flex</a>
+        <a href="#grids">Grids</a>
+      </nav>
+    </header>
+    
+    <main>
+      <h1>Welcome to my CSS-based project</h1>
+
+      <!-- Animations -->
+      <section id="animations">
+        <hr><h2>Animations</h2>
+        <div id="animation-box">
+          <!-- Horizontal Nav -->
+          <div id="h-nav">
+            <div>Willkommen</div>
+            <button onclick="changeNav('h-nav')">Hide nav</button>
+          </div>
+          <!-- Vertical Nav -->
+          <div id="v-nav">
+            <div>Willkommen</div>
+            <button onclick="changeNav('v-nav')">Hide nav</button>
+          </div>
+          <!-- Carousel -->
+          <div id="carousel">
+            <button id="carousel-left" onclick="slide('right')"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="carousel-right" onclick="slide('left')"><i class="fa-solid fa-chevron-right"></i></button>
+            <div id="carousel-items">
+              <div class="on-screen">
+                <img src="./images/birmingham-museums-trust-wKlHsooRVbg-unsplash.jpg" />
+              </div>
+              <div class="off-screen">
+                <img src="./images/diogo-nunes-Wa9ilX9XYOI-unsplash.jpg" />
+              </div>
+              <div class="off-screen">
+                <img src="./images/thomas-lipke-oIuDXlOJSiE-unsplash.jpg" />
+              </div>
+              <div class="off-screen">
+                <img src="./images/timothy-eberly-LHm2nLdtC9g-unsplash.jpg" />
+              </div>
+            </div>
+          </div>
+          <!-- Flashbang -->
+          <div id="flashbang">
+            <img src="./images/M-84-Flash-Bang-Grenade.jpg" onclick="flash()" />
+            <audio id="voice" onended="startExplosion()" src="./audio/throwing-flashbang.mp3"></audio>
+            <audio id="explosion" src="./audio/explosion.mp3"></audio>
+          </div>
+          <!-- Modal Image -->
+          <div id="modal-image">
+            <img src="./images/charlesdeluvio-D-vDQMTfAAU-unsplash.jpg" onclick="modal.showModal()" />
+            <dialog id="modal-box">
+              <button id="close-modal" onclick="modal.close()">X</button>
+              <img src="./images/charlesdeluvio-D-vDQMTfAAU-unsplash.jpg" />
+            </dialog>
+          </div>
+          <!-- Rotating Button -->
+          <div id="rotating-btn">
+            <button onclick="toggleRotate()">Pause Me</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Forms -->
+      <section id="forms">
+        <hr><h2>Forms</h2>
+        <form>
+          <fieldset>
+            <legend>Mad Lib Generator</legend>
+            <div id="mad-lib-top">
+              <div>
+                <label for="user">Your Name</label>
+                <input id="user" type="text" />
+              </div>
+              <div>
+                <label for="prompt">Prompt</label>
+                <select id="prompt">
+                  <option>goats</option>
+                  <option>monsters</option>
+                  <option>spaghetti</option>
+                </select>
+              </div>
+            </div><hr>
+            <div>
+              <div id="words">
+                <div>
+                  <p>Nouns</p>
+                  <input type="text" id="n-0" />
+                  <input type="text" id="n-1" />
+                </div>
+                <div>
+                  <p>Verbs</p>
+                  <input type="text" id="v-0" />
+                  <input type="text" id="v-1" />
+                </div>
+                <div>
+                  <p>Adjectives</p>
+                  <input type="text" id="adj-0" />
+                  <input type="text" id="adj-1" />
+                </div>
+              </div>
+              <button id="generate" onclick="madLib()" type="button">Generate</button>
+              <div id="output-box">
+                <output></output>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- Filters -->
+      <section id="filters">
+        <hr><h2>Filters</h2>
+        <div id="filter-box">
+          <div id="image-box">
+            <img src="./images/ray-hennessy-xUUZcpQlqpM-unsplash.jpg" />
+          </div>
+          <div id="filter-controls" oninput="changeFilter()">
+            <details>
+              <summary><span>Visibility</span></summary>
+              <div class="details-grid">
+                <div class="details-grid-item">
+                  <div>
+                    <label for="blur"></label>
+                    <input id="blur" type="range" value="0" max="25" />
+                  </div>
+                  <div>
+                    <label for="opacity"></label>
+                    <input id="opacity" type="range" value="100" max="100" />
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details>
+              <summary><span>Color</span></summary>
+              <div class="details-grid">
+                <div class="details-grid-item">
+                  <div>
+                    <label for="hue-rotate"></label>
+                    <input id="hue-rotate" type="range" value="0" max="360" />
+                  </div>
+                  <div>
+                    <label for="invert"></label>
+                    <input id="invert" type="range" value="0" max="100" />
+                  </div>
+                  <div>
+                    <label for="saturation"></label>
+                    <input id="saturation" type="range" value="100" max="300" />
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details>
+              <summary><span>Light</span></summary>
+              <div class="details-grid">
+                <div class="details-grid-item">
+                  <div>
+                    <label for="bright"></label>
+                    <input id="bright" type="range" value="100" max="300" />
+                  </div>
+                  <div>
+                    <label for="contrast"></label>
+                    <input id="contrast" type="range" value="100" max="300" />
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details>
+              <summary><span>Gray</span></summary>
+              <div class="details-grid">
+                <div class="details-grid-item">
+                  <div>
+                    <label for="grayscale"></label>
+                    <input id="grayscale" type="range" value="0" max="100" />
+                  </div>
+                  <div>
+                    <label for="sepia"></label>
+                    <input id="sepia" type="range" value="0" max="100" />
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flex -->
+      <section id="flex">
+        <hr><h2>Flex</h2>
+        <div id="flex-display" class="display">
+          <div class="box box1"></div>
+          <div class="box box2"></div>
+          <div class="box box3"></div>
+          <div class="box box4"></div>
+        </div>
+        <div id="flex-controls" class="controls">
+          <div class="control-group boxes">
+            <label># of Boxes</label>
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+          <div class="control-group direction">
+            <label>Direction</label>
+            <select>
+              <option>row</option>
+              <option>column</option>
+            </select>
+          </div>
+          <details class="control-group content">
+            <summary><span>Content</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details class="control-group items">
+            <summary><span>Items</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details class="control-group self">
+            <summary><span>Self</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Grids -->
+      <section id="grids">
+        <hr><h2>Grids</h2>
+        <div id="grid-display" class="display">
+          <div class="box box1"></div>
+          <div class="box box2"></div>
+          <div class="box box3"></div>
+          <div class="box box4"></div>
+        </div>
+        <div id="grid-controls" class="controls">
+          <div class="control-group boxes">
+            <label># of Boxes</label>
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+          <details class="control-group content">
+            <summary><span>Content</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details class="control-group items">
+            <summary><span>Items</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details class="control-group self">
+            <summary><span>Self</span></summary>
+            <div class="details-grid">
+              <div class="details-grid-item">
+                <div>
+                  <label>Justify</label>
+                  <select class="justify">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Align</label>
+                  <select class="align">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Place</label>
+                  <select class="place">
+                    <option></option>
+                    <option>start</option>
+                    <option>center</option>
+                    <option>end</option>
+                    <option>space-between</option>
+                    <option>space-around</option>
+                    <option>space-evenly</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+@use 'variables' as *
+
+@mixin outputStyle
+  grid-template-rows: 1fr
+  padding: 10px
+  border: 2px solid $tertiary
+  box-shadow: 2px 2px 5px black
+
+@keyframes show-output
+  from
+    grid-template-rows: 0fr
+    padding: 0px
+    border: 0px solid $tertiary
+    box-shadow: 0 0 0 $dark
+  to
+    @include outputStyle
+
+.grow
+  animation: show-output 1s
+
+.grown
+  @include outputStyle
+
+fieldset
+  @include flex-column
+  gap: .8em
+  background: $dark
+
+#mad-lib-top
+  @include flex-column
+  gap: 1.5em
+
+#words
+  display: flex
+  flex-direction: column
+  gap: 1.5em
+
+  div > *
+    margin: .2em
+
+#generate
+  @include blue-shadow
+  padding: 10px
+  border: 3px solid $tertiary
+  margin: 20px 0
+
+#generate:active
+  box-shadow: 0 0 10px $secondary
+
+#output-box
+  display: grid
+  background: $gray
+
+  output
+    overflow: hidden
+
+@media (min-width: $sm)
+  #mad-lib-top, #words
+    flex-direction: row

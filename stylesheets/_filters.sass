@@ -1,0 +1,22 @@
+@use 'variables' as *
+
+#filter-box
+  width: 100%
+
+#image-box
+  @include flex-center
+
+  img
+    width: 100%
+
+#filter-controls
+  @include flex-column
+  place-items: center
+
+  details
+    width: 100%
+    margin: 10px 0
+
+@media (min-width: $med)
+  #image-box img, #filter-controls details
+    width: 60%
